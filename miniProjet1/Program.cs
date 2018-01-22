@@ -18,9 +18,22 @@ namespace Burgelin_Lavorel_rosenzweig_tp1
 
         public void Process() {
 
+            ArtGalery myGalery = new ArtGalery();
+            myGalery.Initialize();
+
+
 
         }
 
+        class SculptureUnder100
+        {
+
+        }
+
+        class PaintingOver100
+        {
+
+        }
 
     }
 
@@ -97,8 +110,4 @@ namespace Burgelin_Lavorel_rosenzweig_tp1
         
 
     }
-
-
-
-
 
