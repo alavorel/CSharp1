@@ -1,0 +1,7 @@
+C:\Users\prose\source\repos\CSharp1\miniProjet1\bin\Debug\miniProjet1.exe.config
+C:\Users\prose\source\repos\CSharp1\miniProjet1\bin\Debug\miniProjet1.exe
+C:\Users\prose\source\repos\CSharp1\miniProjet1\bin\Debug\miniProjet1.pdb
+C:\Users\prose\source\repos\CSharp1\miniProjet1\obj\Debug\miniProjet1.csprojResolveAssemblyReference.cache
+C:\Users\prose\source\repos\CSharp1\miniProjet1\obj\Debug\miniProjet1.csproj.CoreCompileInputs.cache
+C:\Users\prose\source\repos\CSharp1\miniProjet1\obj\Debug\miniProjet1.exe
+C:\Users\prose\source\repos\CSharp1\miniProjet1\obj\Debug\miniProjet1.pdb

@@ -21,7 +21,6 @@ namespace Burgelin_Lavorel_rosenzweig_tp1
 
         }
 
-
     }
 
     class ArtGalery
@@ -60,7 +59,6 @@ namespace Burgelin_Lavorel_rosenzweig_tp1
             
         }
 
-
     }
 
     interface IArtSelect
@@ -69,10 +67,6 @@ namespace Burgelin_Lavorel_rosenzweig_tp1
     }
 
     enum Categories { PAINTING, SCULPTURE,DRAWING};
-    
-
-    
-
 
     class ArtPiece : IComparable
     {
@@ -82,19 +76,20 @@ namespace Burgelin_Lavorel_rosenzweig_tp1
 
         public ArtPiece(string _Title, Categories _cat, int _price)
         {
-            m_title =_Title;
-            m_categorie =_cat;
-            m_price =_price;
+            m_title = _Title;
+            m_categorie = _cat;
+            m_price = _price;
         }
-
-
 
         public int CompareTo(object obj)
         {
             return m_price.CompareTo((obj as ArtPiece).m_price);
         }
 
-        
+        public override string ToString()
+        {
+            return "Titre: " + m_title + " Catégorie: " + m_categorie + " Price: " + m_price;
+        }
 
     }
 
