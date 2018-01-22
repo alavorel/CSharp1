@@ -107,7 +107,10 @@ namespace Burgelin_Lavorel_rosenzweig_tp1
             return m_price.CompareTo((obj as ArtPiece).m_price);
         }
 
-        
+        public override string ToString()
+        {
+        return "Titre: " + m_title + " Catégorie: " + m_categorie + " Price: " + m_price;
+        }
 
-    }
+}
 
