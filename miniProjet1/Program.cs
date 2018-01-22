@@ -11,6 +11,12 @@ namespace Burgelin_Lavorel_rosenzweig_tp1
         //methode main
         static void Main(string[] args)
         {
+            Program myprog = new Program();
+            myprog.Process();
+
+        }
+
+        public void Process() {
 
 
         }
@@ -25,7 +31,7 @@ namespace Burgelin_Lavorel_rosenzweig_tp1
         public void Initialize()
         {
             Collection = new ArtPiece[12];
-            Collection[0]=new ArtPiece("Bold and Brash", Categories.PAINTING, 140);
+            Collection[0] = new ArtPiece("Bold and Brash", Categories.PAINTING, 140);
             Collection[1] = new ArtPiece("Le Brasseur", Categories.SCULPTURE, 40);
             Collection[2] = new ArtPiece("L'Uomo Vitruviano", Categories.DRAWING, 200);
             Collection[3] = new ArtPiece("PopArt", Categories.PAINTING, 105);
@@ -44,12 +50,22 @@ namespace Burgelin_Lavorel_rosenzweig_tp1
 
         }
 
+        public Select()
+        {
+
+        }
+
+        public Sort{
+        
+            
+        }
+
 
     }
 
     interface IArtSelect
     {
-        Boolean ArtSelect(ArtPiece piece);
+        Boolean Select(ArtPiece piece);
     }
 
     enum Categories { PAINTING, SCULPTURE,DRAWING};
@@ -60,32 +76,28 @@ namespace Burgelin_Lavorel_rosenzweig_tp1
 
     class ArtPiece : IComparable
     {
-        String Title;
-        Categories Categorie;
-        int Price;
+        String m_title;
+        Categories m_categorie;
+        int m_price;
 
         public ArtPiece(string _Title, Categories _cat, int _price)
         {
-            Title =_Title;
-            Categorie =_cat;
-            Price =_price;
+            m_title =_Title;
+            m_categorie =_cat;
+            m_price =_price;
         }
 
 
 
         public int CompareTo(object obj)
         {
-            return Price.CompareTo((obj as ArtPiece).Price);
+            return m_price.CompareTo((obj as ArtPiece).m_price);
         }
 
         
 
     }
 
-
-
-
-}
 
 
 
