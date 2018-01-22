@@ -11,45 +11,40 @@ namespace Burgelin_Lavorel_rosenzweig_tp1
         //methode main
         static void Main(string[] args)
         {
-            int z=0;
-            Program test = new Program();
-            String str = "le nombre z est =";
-            PremiereClass nvlinstance= new PremiereClass();
-            nvlinstance.Ss_programeClass();
-            z = nvlinstance.geta();
-            z = test.Ss_programe(z);
-            str = str + z;
-            Console.WriteLine(str);
-            Console.ReadLine();
+
 
         }
 
-        private int Ss_programe(int a )
-        {
-
-            return a;
-        }
+       
     }
 
-    class PremiereClass
+    class ArtGalery
     {
-        int a;
-
-       public void Ss_programeClass()
+       public bool ArtSelect(ArtPiece piece)
         {
-            a = 0;
-            a++;
-        }
 
-        public int geta()
-        {
-            return a;
         }
         
     }
 
+    enum Categories { PAINTING, SCULPTURE,DRAWING};
+    
+
+    
 
 
+    class ArtPiece : IComparable
+    {
+        String Title;
+        Categories Categorie;
+        int Price;
+
+        public int CompareTo(object obj)
+        {
+            return Price.CompareTo((obj as ArtPiece).Price);
+        }
+
+    }
 
 
 
