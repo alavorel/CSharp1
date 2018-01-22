@@ -15,16 +15,41 @@ namespace Burgelin_Lavorel_rosenzweig_tp1
 
         }
 
-       
+
     }
 
     class ArtGalery
     {
-       public bool ArtSelect(ArtPiece piece)
+        ArtPiece[] Collection;
+
+        public void Initialize()
+        {
+            Collection = new ArtPiece[12];
+            Collection[0]=new ArtPiece("Bold and Brash", Categories.PAINTING, 140);
+            Collection[1] = new ArtPiece("Le Brasseur", Categories.SCULPTURE, 40);
+            Collection[2] = new ArtPiece("L'Uomo Vitruviano", Categories.DRAWING, 200);
+            Collection[3] = new ArtPiece("PopArt", Categories.PAINTING, 105);
+            Collection[4] = new ArtPiece("Le Penseur", Categories.SCULPTURE, 180);
+            Collection[5] = new ArtPiece("Picasso Sketch", Categories.DRAWING, 193);
+            Collection[6] = new ArtPiece("Un Serpent Boa qui Digérait un Éléphant", Categories.DRAWING, 25);
+            Collection[7] = new ArtPiece("Mouton Dessiné", Categories.DRAWING, 78);
+            Collection[8] = new ArtPiece("Gernika", Categories.PAINTING, 135);
+            Collection[9] = new ArtPiece("Belongs in the Trash", Categories.PAINTING, 20);
+            Collection[10] = new ArtPiece("Davide de Bernini", Categories.SCULPTURE, 130);
+            Collection[11] = new ArtPiece("Badly Shapen Pot", Categories.SCULPTURE, 25);
+        }
+
+        public ProcessArtPiece()
         {
 
         }
-        
+
+
+    }
+
+    interface IArtSelect
+    {
+        Boolean ArtSelect(ArtPiece piece);
     }
 
     enum Categories { PAINTING, SCULPTURE,DRAWING};
@@ -39,10 +64,21 @@ namespace Burgelin_Lavorel_rosenzweig_tp1
         Categories Categorie;
         int Price;
 
+        public ArtPiece(string _Title, Categories _cat, int _price)
+        {
+            Title =_Title;
+            Categorie =_cat;
+            Price =_price;
+        }
+
+
+
         public int CompareTo(object obj)
         {
             return Price.CompareTo((obj as ArtPiece).Price);
         }
+
+        
 
     }
 
@@ -50,4 +86,7 @@ namespace Burgelin_Lavorel_rosenzweig_tp1
 
 
 }
+
+
+
 
