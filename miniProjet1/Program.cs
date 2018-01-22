@@ -26,12 +26,16 @@ namespace Burgelin_Lavorel_rosenzweig_tp1
             myGalery.Sort();
 
             SculptureUnder100 scp = new SculptureUnder100();
+            Console.WriteLine("\n\nSculpture under 100:\n");
+            myGalery.ProcessArtPiece(scp);
 
-            
 
             PaintingOver100 pnt = new PaintingOver100();
+            Console.WriteLine("\n\nPainting over 100:\n");
+            myGalery.ProcessArtPiece(pnt);
 
-
+            Console.WriteLine("\n\nBase selection: everything over 150:\n");
+            myGalery.ProcessArtPiece(myGalery);
 
 
 
@@ -43,7 +47,7 @@ namespace Burgelin_Lavorel_rosenzweig_tp1
 
             public bool Select(ArtPiece piece)
             {
-                if (piece.Price < 100 && piece.Categorie == Categories.SCULPTURE)
+                if ((piece.Price < 100) && (piece.Categorie == Categories.SCULPTURE))
                 {
                     return true;
                 }
@@ -58,7 +62,7 @@ namespace Burgelin_Lavorel_rosenzweig_tp1
         {
             public bool Select(ArtPiece piece)
             {
-                if (piece.Price > 100 && piece.Categorie == Categories.PAINTING)
+                if ((piece.Price > 100) && (piece.Categorie == Categories.PAINTING))
                 {
                     return true;
                 }
@@ -92,16 +96,17 @@ namespace Burgelin_Lavorel_rosenzweig_tp1
             Collection[11] = new ArtPiece("Badly Shapen Pot", Categories.SCULPTURE, 25);
         }
 
-        public void ProcessArtPiece()
+        public void ProcessArtPiece(IArtSelect selector)
         {
-
+            Console.WriteLine("Selected art pieces for you are : \n");
             for (int i = 0; i < 12; i++)
             {
-                if (Select(Collection[i]))
+                if (selector.Select(Collection[i]))
                 {
                     Console.WriteLine(Collection[i]);
                 }
             }
+            Console.ReadKey();
 
         }
 
@@ -111,7 +116,7 @@ namespace Burgelin_Lavorel_rosenzweig_tp1
            
             Array.Sort(Collection, new PriceComparer());
 
-            Console.WriteLine("La collection trier est :\n");
+            Console.WriteLine("Sorted collection is :\n");
 
             for (int i = 0; i < 12; i++)
             {
@@ -166,9 +171,9 @@ namespace Burgelin_Lavorel_rosenzweig_tp1
             m_price = _price;
 
         }
-        public Categories Categorie { get; set; }
+        public Categories Categorie { get{return m_categorie; } set {m_categorie=value; } }
 
-        public int Price { get; set; }
+        public int Price { get { return m_price; } set {m_price=value; }     }
 
 
         public int CompareTo(object obj)
@@ -191,5 +196,7 @@ namespace Burgelin_Lavorel_rosenzweig_tp1
         }
     }
 }
+
+
 
 
