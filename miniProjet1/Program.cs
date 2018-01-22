@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Collections;
 
 namespace Burgelin_Lavorel_rosenzweig_tp1
 {
@@ -16,30 +17,63 @@ namespace Burgelin_Lavorel_rosenzweig_tp1
 
         }
 
-        public void Process() {
+        public void Process()
+        {
 
             ArtGalery myGalery = new ArtGalery();
             myGalery.Initialize();
 
+            myGalery.Sort();
+
+            SculptureUnder100 scp = new SculptureUnder100();
+
+            
+
+            PaintingOver100 pnt = new PaintingOver100();
+
+
+
+
 
 
         }
 
-        class SculptureUnder100
+        class SculptureUnder100 : IArtSelect
         {
 
+            public bool Select(ArtPiece piece)
+            {
+                if (piece.Price < 100 && piece.Categorie == Categories.SCULPTURE)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
         }
 
-        class PaintingOver100
+        class PaintingOver100 : IArtSelect
         {
-
+            public bool Select(ArtPiece piece)
+            {
+                if (piece.Price > 100 && piece.Categorie == Categories.PAINTING)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
         }
 
     }
 
-    class ArtGalery
+    class ArtGalery : IArtSelect
     {
-        ArtPiece[] Collection;
+        private ArtPiece[] Collection;
 
         public void Initialize()
         {
@@ -58,20 +92,52 @@ namespace Burgelin_Lavorel_rosenzweig_tp1
             Collection[11] = new ArtPiece("Badly Shapen Pot", Categories.SCULPTURE, 25);
         }
 
-        public ProcessArtPiece()
+        public void ProcessArtPiece()
         {
 
+            for (int i = 0; i < 12; i++)
+            {
+                if (Select(Collection[i]))
+                {
+                    Console.WriteLine(Collection[i]);
+                }
+            }
+
         }
 
-        public Select()
+        public void Sort()
         {
 
+           
+            Array.Sort(Collection, new PriceComparer());
+
+            Console.WriteLine("La collection trier est :\n");
+
+            for (int i = 0; i < 12; i++)
+            {
+                
+                    Console.WriteLine(Collection[i]);
+               
+            }
+            Console.ReadKey();
+
         }
 
-        public Sort{
-        
-            
+
+        public bool Select(ArtPiece piece)
+        {
+            if (piece.Price > 150)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
+
+       
+
 
 
     }
@@ -81,10 +147,10 @@ namespace Burgelin_Lavorel_rosenzweig_tp1
         Boolean Select(ArtPiece piece);
     }
 
-    enum Categories { PAINTING, SCULPTURE,DRAWING};
-    
+    enum Categories { PAINTING, SCULPTURE, DRAWING };
 
-    
+
+
 
 
     class ArtPiece : IComparable
@@ -95,11 +161,14 @@ namespace Burgelin_Lavorel_rosenzweig_tp1
 
         public ArtPiece(string _Title, Categories _cat, int _price)
         {
-            m_title =_Title;
-            m_categorie =_cat;
-            m_price =_price;
-        }
+            m_title = _Title;
+            m_categorie = _cat;
+            m_price = _price;
 
+        }
+        public Categories Categorie { get; set; }
+
+        public int Price { get; set; }
 
 
         public int CompareTo(object obj)
@@ -109,8 +178,18 @@ namespace Burgelin_Lavorel_rosenzweig_tp1
 
         public override string ToString()
         {
-        return "Titre: " + m_title + " Catégorie: " + m_categorie + " Price: " + m_price;
+            return "Titre: " + m_title + " Catégorie: " + m_categorie + " Price: " + m_price;
         }
 
+    }
+
+    class PriceComparer : IComparer
+    {
+        public int Compare(object x, object y)
+        {
+            return (x as ArtPiece).Price.CompareTo((y as ArtPiece).Price);
+        }
+    }
 }
+
 
